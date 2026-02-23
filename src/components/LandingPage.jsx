@@ -24,7 +24,7 @@ const SLIDES = [
   },
 ]
 
-export default function LandingPage({ onGetStarted }) {
+export default function LandingPage({ onGetStarted, onSignIn }) {
   const [slideIndex, setSlideIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
@@ -58,6 +58,7 @@ export default function LandingPage({ onGetStarted }) {
         <div className={styles.shape4} />
       </div>
 
+      <div className={styles.scrollContent}>
       <header className={styles.header}>
         <span className={styles.logo}>SMART SYLLABUS PLANNER</span>
       </header>
@@ -105,12 +106,22 @@ export default function LandingPage({ onGetStarted }) {
             Get Started
           </button>
           <p className={styles.ctaHint}>Free — create an account to begin</p>
+          {onSignIn && (
+            <button
+              type="button"
+              className={styles.signInLink}
+              onClick={onSignIn}
+            >
+              Already have an account? Sign in
+            </button>
+          )}
         </section>
       </main>
 
       <footer className={styles.footer}>
         <p>© {new Date().getFullYear()} Smart Syllabus Planner</p>
       </footer>
+      </div>
     </div>
   )
 }

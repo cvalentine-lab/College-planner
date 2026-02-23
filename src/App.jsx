@@ -73,7 +73,14 @@ function AppContent() {
     if (showLanding !== false) {
       return (
         <LandingPage
-          onGetStarted={() => setShowLanding(false)}
+          onGetStarted={() => {
+            setAuthMode('create')
+            setShowLanding(false)
+          }}
+          onSignIn={() => {
+            setAuthMode('signin')
+            setShowLanding(false)
+          }}
         />
       )
     }
