@@ -13,12 +13,17 @@
 }
 
 .sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 200px;
   min-width: 180px;
   background: var(--sidebar-bg);
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 
 .brand {
@@ -47,8 +52,16 @@
   border-color: var(--accent-orange);
 }
 
-.main {
+.mainScroll {
   flex: 1;
+  margin-left: 200px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -116,7 +129,28 @@
 
 .content {
   flex: 1;
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 4rem;
+  min-height: 60vh;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding: 3rem 2rem 4rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footerText {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.footerTagline {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .section {
@@ -193,7 +227,12 @@
     flex-direction: column;
   }
 
+  .mainScroll {
+    margin-left: 0;
+  }
+
   .sidebar {
+    position: relative;
     width: 100%;
     min-width: unset;
     padding: 1rem 1.5rem;
@@ -202,6 +241,7 @@
     justify-content: space-between;
     gap: 1rem;
   }
+
 
   .brand {
     margin-bottom: 0;
@@ -216,6 +256,11 @@
   }
 
   .content {
-    padding: 0 1rem 1.5rem;
+    padding: 0 1rem 3rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem 3rem;
+    margin-top: 2rem;
   }
 }

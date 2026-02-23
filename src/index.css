@@ -1,8 +1,8 @@
 :root {
-  --sidebar-bg: #2d2640;
-  --bg-primary: #5e4a7a;
-  --bg-secondary: rgba(255, 255, 255, 0.12);
-  --bg-tertiary: rgba(255, 255, 255, 0.08);
+  --sidebar-bg: #16202c;
+  --bg-primary: #1a2332;
+  --bg-secondary: rgba(255, 255, 255, 0.08);
+  --bg-tertiary: rgba(255, 255, 255, 0.05);
   --text-primary: #f5f5f5;
   --text-secondary: rgba(255, 255, 255, 0.75);
   --accent: #e87d4a;
@@ -28,13 +28,17 @@
   box-sizing: border-box;
 }
 
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
+}
+
+body {
   font-family: var(--font-sans);
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 button, a, input, select, textarea, [role="button"] {

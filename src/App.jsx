@@ -7,12 +7,14 @@ import Summary from './components/Summary'
 import Calendar from './components/Calendar'
 import ClassFilter from './components/ClassFilter'
 import AuthScreen from './components/AuthScreen'
+import LandingPage from './components/LandingPage'
 import { parseAssignments, sortByDueDate, getUniqueCourses, filterByCourse } from './utils/syllabusParser'
 import styles from './App.module.css'
 
 function AppContent() {
   const { user, loading, login, createAccount, logout } = useAuth()
   const [authMode, setAuthMode] = useState('signin')
+  const [showLanding, setShowLanding] = useState(true)
   const [showAddPanel, setShowAddPanel] = useState(false)
   const [jsonInput, setJsonInput] = useState('')
   const [courseName, setCourseName] = useState('')
@@ -68,11 +70,19 @@ function AppContent() {
   }
 
   if (!user) {
+    if (showLanding !== false) {
+      return (
+        <LandingPage
+          onGetStarted={() => setShowLanding(false)}
+        />
+      )
+    }
     return (
       <AuthScreen
         mode={authMode}
         onSwitchMode={() => setAuthMode((m) => (m === 'signin' ? 'create' : 'signin'))}
         onSuccess={{ login, createAccount }}
+        onBack={() => setShowLanding(true)}
       />
     )
   }
@@ -88,10 +98,11 @@ function AppContent() {
         >
           + Add Course
         </button>
-        </aside>
+      </aside>
 
-      <div className={styles.main}>
-        <nav className={styles.nav}>
+      <div className={styles.mainScroll}>
+        <div className={styles.main}>
+          <nav className={styles.nav}>
           {assignments.length > 0 && (
             <>
               <ClassFilter
@@ -132,31 +143,40 @@ function AppContent() {
           >
             Sign Out
           </button>
-        </nav>
+          </nav>
 
-        <div className={styles.content}>
-          {assignments.length === 0 ? (
-            <div className={styles.empty}>
-              <p>Add a course to get started.</p>
-              <p className={styles.emptyHint}>
-                Use the <strong>+ Add Course</strong> button. Paste your syllabus into ChatGPT with the prompt in that panel, then paste the JSON output here.
-              </p>
-              <button
-                type="button"
-                className={styles.addBtnLarge}
-                onClick={() => setShowAddPanel(true)}
-              >
-                + Add Course
-              </button>
-            </div>
-          ) : showList ? (
-            <section className={styles.section}>
-              <Summary assignments={sortedAssignments} />
-              <AssignmentTable assignments={sortedAssignments} />
-            </section>
-          ) : (
-            <Calendar assignments={filteredAssignments} />
-          )}
+          <div className={styles.content}>
+            {assignments.length === 0 ? (
+              <div className={styles.empty}>
+                <p>Add a course to get started.</p>
+                <p className={styles.emptyHint}>
+                  Use the <strong>+ Add Course</strong> button. Paste your syllabus into ChatGPT with the prompt in that panel, then paste the JSON output here.
+                </p>
+                <button
+                  type="button"
+                  className={styles.addBtnLarge}
+                  onClick={() => setShowAddPanel(true)}
+                >
+                  + Add Course
+                </button>
+              </div>
+            ) : showList ? (
+              <section className={styles.section}>
+                <Summary assignments={sortedAssignments} />
+                <AssignmentTable assignments={sortedAssignments} />
+              </section>
+            ) : (
+              <Calendar assignments={filteredAssignments} />
+            )}
+          </div>
+          <footer className={styles.footer}>
+            <p className={styles.footerText}>
+              © {new Date().getFullYear()} Smart Syllabus Planner. All rights reserved.
+            </p>
+            <p className={styles.footerTagline}>
+              Plan smarter, stress less.
+            </p>
+          </footer>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './AuthScreen.module.css'
 
-export default function AuthScreen({ mode, onSwitchMode, onSuccess }) {
+export default function AuthScreen({ mode, onSwitchMode, onSuccess, onBack }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -25,6 +25,15 @@ export default function AuthScreen({ mode, onSwitchMode, onSuccess }) {
 
   return (
     <div className={styles.wrapper}>
+      {onBack && (
+        <button
+          type="button"
+          className={styles.backBtn}
+          onClick={onBack}
+        >
+          ← Back
+        </button>
+      )}
       <div className={styles.card}>
         <h1 className={styles.title}>
           {isCreate ? 'Create Account' : 'Sign In'}
