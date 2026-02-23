@@ -19,7 +19,7 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
       setTimeout(() => {
         setSlideIndex((i) => (i + 1) % SLIDES.length)
         setIsTransitioning(false)
-      }, 300)
+      }, 700)
     }, 4500)
     return () => clearInterval(t)
   }, [])
@@ -30,7 +30,7 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
     setTimeout(() => {
       setSlideIndex(i)
       setIsTransitioning(false)
-    }, 300)
+    }, 700)
   }
 
   function scrollToTop() {
@@ -104,9 +104,6 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
               Already have an account? Sign in
             </button>
           )}
-          <div className={styles.codeIcon} aria-hidden="true">
-            {'</>'}
-          </div>
         </section>
 
         <section className={styles.right}>
@@ -129,10 +126,12 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
       </div>
 
       <section id="slideshow" className={styles.slidesSection}>
-        <div className={`${styles.slideCard} ${isTransitioning ? styles.slideOut : ''}`} key={slideIndex}>
+        <div className={styles.slideCardWrapper}>
+          <div className={`${styles.slideCard} ${isTransitioning ? styles.slideOut : ''}`} key={slideIndex}>
           <div className={styles.slideIcon}>{SLIDES[slideIndex].icon}</div>
           <h2 className={styles.slideTitle}>{SLIDES[slideIndex].title}</h2>
           <p className={styles.slideDesc}>{SLIDES[slideIndex].description}</p>
+        </div>
         </div>
         <div className={styles.dots}>
           {SLIDES.map((_, i) => (

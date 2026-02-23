@@ -1,5 +1,96 @@
 .calendar {
   width: 100%;
+  position: relative;
+}
+
+.flowerCorner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.flowerCorner .flowerCenter {
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b 40%, #d97706 100%);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.flowerCorner .petal {
+  position: absolute;
+  left: 100%;
+  top: 100%;
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+  transform-origin: 50% 100%;
+  opacity: 1;
+  z-index: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.flowerCorner .petal[data-i="1"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(240deg);
+  background: #ec4899;
+}
+
+.flowerCorner .petal[data-i="2"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(264deg);
+  background: #db2777;
+}
+
+.flowerCorner .petal[data-i="3"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(288deg);
+  background: #a855f7;
+}
+
+.flowerCorner .petal[data-i="4"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(312deg);
+  background: #8b5cf6;
+}
+
+.flowerCorner .petal[data-i="5"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(336deg);
+  background: #ec4899;
+}
+
+.flowerCorner .petal[data-i="6"] {
+  width: 18px;
+  height: 32px;
+  margin-left: -9px;
+  margin-top: -32px;
+  transform: rotate(228deg);
+  background: #f472b6;
 }
 
 .toolbar {

@@ -17,21 +17,22 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 200px;
-  min-width: 180px;
+  width: 220px;
+  min-width: 200px;
   background: var(--sidebar-bg);
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   z-index: 10;
 }
 
 .brand {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   color: var(--text-primary);
-  margin-bottom: 2rem;
+  flex-shrink: 0;
 }
 
 .sidebarAddBtn {
@@ -52,9 +53,26 @@
   border-color: var(--accent-orange);
 }
 
+.sidebarLogout {
+  margin-top: auto;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebarLogout:hover {
+  color: var(--text-primary);
+}
+
 .mainScroll {
   flex: 1;
-  margin-left: 200px;
+  margin-left: 220px;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -235,20 +253,23 @@
     position: relative;
     width: 100%;
     min-width: unset;
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    padding: 1rem 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
-
   .brand {
-    margin-bottom: 0;
+    flex: 1;
+    min-width: 120px;
   }
 
   .sidebarAddBtn {
     width: auto;
+  }
+
+  .sidebarLogout {
+    margin-top: 0;
   }
 
   .nav {

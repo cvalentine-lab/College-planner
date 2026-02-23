@@ -10,10 +10,14 @@
 }
 
 .header {
+  position: relative;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
+  flex-shrink: 0;
+  background: #0d1421;
 }
 
 .logo {
@@ -33,9 +37,11 @@
 .nav {
   display: flex;
   gap: 2rem;
+  pointer-events: auto;
 }
 
 .navLink {
+  font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -48,6 +54,15 @@
 
 .navLink:hover {
   color: #5db8e8;
+}
+
+.navLink:focus {
+  outline: none;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid #5db8e8;
+  outline-offset: 2px;
 }
 
 .split {
@@ -94,17 +109,33 @@
   padding: 35vh 3rem 15vh;
 }
 
+.slideCardWrapper {
+  overflow: hidden;
+}
+
 .slideCard {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 2.5rem 2.5rem;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  animation: slideIn 0.7s ease;
 }
 
 .slideOut {
+  transform: translateX(-100%);
   opacity: 0;
-  transform: translateY(-8px) scale(0.98);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .slideIcon {
@@ -189,13 +220,6 @@
   text-decoration: underline;
 }
 
-.codeIcon {
-  margin-top: 3rem;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.35);
-  font-family: var(--font-mono);
-}
-
 .right {
   position: relative;
   min-height: 400px;
@@ -203,6 +227,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .foliage {
@@ -210,6 +235,7 @@
   width: 100%;
   max-width: 580px;
   height: 520px;
+  pointer-events: none;
 }
 
 .flowerCenter {

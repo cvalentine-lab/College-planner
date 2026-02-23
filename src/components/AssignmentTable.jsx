@@ -1,5 +1,6 @@
 import React from 'react'
 import { isDueWithin7Days } from '../utils/syllabusParser'
+import { getCourseColor } from '../utils/courseColors'
 import styles from './AssignmentTable.module.css'
 
 export default function AssignmentTable({ assignments }) {
@@ -19,9 +20,13 @@ export default function AssignmentTable({ assignments }) {
         <tbody>
           {assignments.map((a, i) => {
             const urgent = isDueWithin7Days(a.due)
+            const color = getCourseColor(a.course)
             return (
               <tr key={i} className={urgent ? styles.urgentRow : ''}>
-                <td className={styles.course}>{a.course || '—'}</td>
+                <td className={styles.course} style={{ borderLeft: `3px solid ${color}` }}>
+                  <span className={styles.courseDot} style={{ backgroundColor: color }} aria-hidden />
+                  {a.course || '—'}
+                </td>
                 <td>{a.title}</td>
                 <td className={urgent ? styles.urgentDate : ''}>{a.due}</td>
                 <td className={styles.content}>{a.content || '—'}</td>

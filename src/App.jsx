@@ -5,7 +5,7 @@ import AddCoursePanel from './components/AddCoursePanel'
 import AssignmentTable from './components/AssignmentTable'
 import Summary from './components/Summary'
 import Calendar from './components/Calendar'
-import ClassFilter from './components/ClassFilter'
+import SidebarClassList from './components/SidebarClassList'
 import AuthScreen from './components/AuthScreen'
 import LandingPage from './components/LandingPage'
 import { parseAssignments, sortByDueDate, getUniqueCourses, filterByCourse } from './utils/syllabusParser'
@@ -98,51 +98,51 @@ function AppContent() {
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
         <div className={styles.brand}>COLLEGE PLANNER</div>
+        <SidebarClassList
+          courses={courses}
+          value={courseFilter}
+          onChange={setCourseFilter}
+        />
+        <button
+          type="button"
+          className={styles.sidebarAddBtn}
+          onClick={() => setShowAddPanel(true)}
+        >
+          + Add Course
+        </button>
+        <button
+          type="button"
+          className={styles.sidebarLogout}
+          onClick={logout}
+          title="Sign out"
+        >
+          Sign Out
+        </button>
       </aside>
 
       <div className={styles.mainScroll}>
         <div className={styles.main}>
           <nav className={styles.nav}>
-          {assignments.length > 0 && (
-            <>
-              <ClassFilter
-                courses={courses}
-                value={courseFilter}
-                onChange={setCourseFilter}
-              />
-              <button
-                type="button"
-                className={styles.navLink}
-                onClick={() => setShowList(false)}
-                data-active={!showList}
-              >
-                Calendar
-              </button>
-              <button
-                type="button"
-                className={styles.navLink}
-                onClick={() => setShowList(true)}
-                data-active={showList}
-              >
-                List
-              </button>
-            </>
-          )}
-          <button
-            type="button"
-            className={styles.navAddBtn}
-            onClick={() => setShowAddPanel(true)}
-          >
-            + Add Course
-          </button>
-          <button
-            type="button"
-            className={styles.logoutCorner}
-            onClick={logout}
-            title="Sign out"
-          >
-            Sign Out
-          </button>
+            {assignments.length > 0 && (
+              <>
+                <button
+                  type="button"
+                  className={styles.navLink}
+                  onClick={() => setShowList(false)}
+                  data-active={!showList}
+                >
+                  Calendar
+                </button>
+                <button
+                  type="button"
+                  className={styles.navLink}
+                  onClick={() => setShowList(true)}
+                  data-active={showList}
+                >
+                  List
+                </button>
+              </>
+            )}
           </nav>
 
           <div className={styles.content}>
@@ -150,7 +150,7 @@ function AppContent() {
               <div className={styles.empty}>
                 <p>Add a course to get started.</p>
                 <p className={styles.emptyHint}>
-                  Click <strong>+ Add Course</strong> in the nav bar above. Paste your syllabus into AI with the prompt in that panel, then paste the output here.
+                  Click <strong>+ Add Course</strong> in the sidebar. Paste your syllabus into AI with the prompt in that panel, then paste the output here.
                 </p>
               </div>
             ) : showList ? (
