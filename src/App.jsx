@@ -97,7 +97,7 @@ function AppContent() {
   return (
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
-        <div className={styles.brand}>SMART SYLLABUS PLANNER</div>
+        <div className={styles.brand}>COLLEGE PLANNER</div>
         <button
           type="button"
           className={styles.sidebarAddBtn}
@@ -178,7 +178,7 @@ function AppContent() {
           </div>
           <footer className={styles.footer}>
             <p className={styles.footerText}>
-              © {new Date().getFullYear()} Smart Syllabus Planner. All rights reserved.
+              © {new Date().getFullYear()} College Planner. All rights reserved.
             </p>
             <p className={styles.footerTagline}>
               Plan smarter, stress less.

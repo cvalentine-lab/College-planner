@@ -1,4 +1,4 @@
-# Smart Syllabus Planner & Grade Tracker
+# College Planner
 
 A React web app that helps students plan assignments and calculate the minimum score needed on each assignment to reach their target grade.
 

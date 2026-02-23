@@ -60,7 +60,7 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
 
       <div className={styles.scrollContent}>
       <header className={styles.header}>
-        <span className={styles.logo}>SMART SYLLABUS PLANNER</span>
+        <span className={styles.logo}>COLLEGE PLANNER</span>
       </header>
 
       <main className={styles.main}>
@@ -119,7 +119,7 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
       </main>
 
       <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Smart Syllabus Planner</p>
+        <p>© {new Date().getFullYear()} College Planner</p>
       </footer>
       </div>
     </div>
