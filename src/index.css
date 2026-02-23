@@ -19,6 +19,9 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --radius: 8px;
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
 }
 
 * {
@@ -32,4 +35,15 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  transition: color var(--transition-fast), background-color var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast),
+    opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   color: var(--text-secondary);
+  animation: fadeIn 0.3s ease;
 }
 
 .layout {
@@ -44,24 +45,6 @@
 .sidebarAddBtn:hover {
   background: var(--bg-tertiary);
   border-color: var(--accent-orange);
-}
-
-.logoutBtn {
-  margin-top: auto;
-  padding: 0.6rem 0;
-  font-size: 0.85rem;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  color: var(--text-secondary);
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-}
-
-.logoutBtn:hover {
-  color: var(--text-primary);
 }
 
 .main {
@@ -116,6 +99,21 @@
   border-color: var(--accent-orange);
 }
 
+.logoutCorner {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.logoutCorner:hover {
+  color: var(--text-primary);
+}
+
 .content {
   flex: 1;
   padding: 0 2rem 2rem;
@@ -127,6 +125,12 @@
   padding: 1.5rem;
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .empty {
@@ -137,6 +141,7 @@
   min-height: 400px;
   text-align: center;
   color: var(--text-secondary);
+  animation: fadeIn 0.4s ease;
 }
 
 .empty p {
@@ -160,11 +165,14 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .addBtnLarge:hover {
   background: var(--bg-tertiary);
   border-color: var(--accent-orange);
+  transform: translateY(-2px);
 }
 
 .overlay {
@@ -172,6 +180,12 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
   z-index: 99;
+  animation: overlayFadeIn 0.2s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (max-width: 700px) {

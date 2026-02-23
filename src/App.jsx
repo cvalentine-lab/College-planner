@@ -88,10 +88,7 @@ function AppContent() {
         >
           + Add Course
         </button>
-        <button type="button" className={styles.logoutBtn} onClick={logout}>
-          Sign Out
-        </button>
-      </aside>
+        </aside>
 
       <div className={styles.main}>
         <nav className={styles.nav}>
@@ -126,6 +123,14 @@ function AppContent() {
             onClick={() => setShowAddPanel(true)}
           >
             + Add Course
+          </button>
+          <button
+            type="button"
+            className={styles.logoutCorner}
+            onClick={logout}
+            title="Sign out"
+          >
+            Sign Out
           </button>
         </nav>
 

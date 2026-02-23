@@ -25,6 +25,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 .viewBtn:hover {
@@ -42,6 +44,11 @@
   border: 1px solid var(--accent-orange);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.viewActive:hover {
+  transform: scale(1.02);
 }
 
 .goTo {
@@ -63,6 +70,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .goToInput:focus {
@@ -135,6 +143,12 @@
   overflow: hidden;
   background: var(--bg-secondary);
   backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .weekdayHeader {
@@ -163,6 +177,10 @@
   border-bottom: none;
 }
 
+.weekRow {
+  transition: background var(--transition-fast);
+}
+
 .weekRow:hover {
   background: rgba(255, 255, 255, 0.02);
 }
@@ -172,6 +190,7 @@
   padding: 0.5rem;
   border-right: 1px solid var(--border);
   cursor: pointer;
+  transition: background var(--transition-fast);
 }
 
 .dayCell:last-child {
@@ -218,6 +237,7 @@
   overflow: hidden;
   background: var(--bg-secondary);
   backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
 }
 
 .weekGrid {
@@ -297,6 +317,7 @@
   padding: 1.25rem;
   background: var(--bg-secondary);
   backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
 }
 
 .dayViewList {
