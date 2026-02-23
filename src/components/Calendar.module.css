@@ -29,7 +29,7 @@
 
 .viewBtn:hover {
   color: var(--text-primary);
-  border-color: var(--accent);
+  border-color: var(--accent-orange);
 }
 
 .viewActive {
@@ -37,9 +37,9 @@
   font-size: 0.9rem;
   font-weight: 500;
   font-family: var(--font-sans);
-  color: #fff;
-  background: var(--accent);
-  border: 1px solid var(--accent);
+  color: #1a1519;
+  background: var(--accent-orange);
+  border: 1px solid var(--accent-orange);
   border-radius: var(--radius);
   cursor: pointer;
 }
@@ -67,7 +67,7 @@
 
 .goToInput:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent-orange);
 }
 
 .backBtn {
@@ -75,7 +75,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   font-family: var(--font-sans);
-  color: var(--accent);
+  color: var(--accent-orange);
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -84,7 +84,8 @@
 
 .backBtn:hover {
   background: var(--bg-tertiary);
-  border-color: var(--accent);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
 }
 
 .nav {
@@ -124,7 +125,7 @@
 }
 
 .titleBtn:hover {
-  color: var(--accent);
+  color: var(--accent-orange);
 }
 
 /* Month view */
@@ -132,6 +133,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(8px);
 }
 
 .weekdayHeader {
@@ -181,7 +184,7 @@
 }
 
 .today {
-  background: rgba(29, 155, 240, 0.1);
+  background: rgba(232, 125, 74, 0.25);
 }
 
 .dayNum {
@@ -213,6 +216,8 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(8px);
 }
 
 .weekGrid {
@@ -232,7 +237,7 @@
 }
 
 .weekDay.today {
-  background: rgba(29, 155, 240, 0.08);
+  background: rgba(232, 125, 74, 0.2);
 }
 
 .weekDayHeader {
@@ -256,7 +261,7 @@
 }
 
 .weekDayNum:hover {
-  color: var(--accent);
+  color: var(--accent-orange);
 }
 
 .weekDayItems {
@@ -289,7 +294,9 @@
 .dayView {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(8px);
 }
 
 .dayViewList {

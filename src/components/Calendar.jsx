@@ -342,12 +342,12 @@ function DayView({ focusDate, assignments }) {
 }
 
 const COURSE_COLORS = [
-  '#1d9bf0',
-  '#00ba7c',
-  '#ffad1f',
-  '#f4212e',
-  '#7856ff',
-  '#ff7a00',
+  '#e87d4a',
+  '#f0a066',
+  '#f0c977',
+  '#94b0d5',
+  '#ee9988',
+  '#e8b84a',
 ]
 
 const colorMap = new Map()

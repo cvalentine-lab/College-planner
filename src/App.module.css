@@ -1,69 +1,132 @@
-.app {
+.loading {
   min-height: 100vh;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-  position: relative;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.title {
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: -0.02em;
-}
-
-.headerRight {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--text-secondary);
 }
 
-.addBtn {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  min-width: 180px;
+  background: var(--sidebar-bg);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: 0.85rem;
   font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.sidebarAddBtn {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
   font-family: var(--font-sans);
-  color: #fff;
-  background: var(--accent);
-  border: none;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
+  width: 100%;
 }
 
-.addBtn:hover {
-  background: var(--accent-hover);
+.sidebarAddBtn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-orange);
 }
 
-.listToggle {
-  padding: 0.5rem 0.75rem;
+.logoutBtn {
+  margin-top: auto;
+  padding: 0.6rem 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.logoutBtn:hover {
+  color: var(--text-primary);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  flex-wrap: wrap;
+}
+
+.navLink {
   font-size: 0.9rem;
   font-weight: 500;
   font-family: var(--font-sans);
   color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.navLink[data-active="true"] {
+  color: var(--text-primary);
+}
+
+.navAddBtn {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
 }
 
-.listToggle:hover {
-  color: var(--text-primary);
-  border-color: var(--accent);
+.navAddBtn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--accent-orange);
 }
 
-.main {
-  min-height: 60vh;
+.content {
+  flex: 1;
+  padding: 0 2rem 2rem;
+}
+
+.section {
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
 .empty {
@@ -81,7 +144,7 @@
 }
 
 .emptyHint {
-  max-width: 400px;
+  max-width: 380px;
   margin-bottom: 1.5rem !important;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -89,37 +152,56 @@
 
 .addBtnLarge {
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 500;
   font-family: var(--font-sans);
-  color: #fff;
-  background: var(--accent);
-  border: none;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   cursor: pointer;
 }
 
 .addBtnLarge:hover {
-  background: var(--accent-hover);
-}
-
-.section {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
+  background: var(--bg-tertiary);
+  border-color: var(--accent-orange);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 99;
 }
 
-@media (max-width: 600px) {
-  .app {
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    margin-bottom: 0;
+  }
+
+  .sidebarAddBtn {
+    width: auto;
+  }
+
+  .nav {
     padding: 1rem;
+  }
+
+  .content {
+    padding: 0 1rem 1.5rem;
   }
 }

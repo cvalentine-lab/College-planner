@@ -35,11 +35,11 @@
 }
 
 .urgentRow {
-  background: rgba(244, 33, 46, 0.08) !important;
+  background: rgba(238, 122, 122, 0.12) !important;
 }
 
 .urgentRow:hover {
-  background: rgba(244, 33, 46, 0.12) !important;
+  background: rgba(238, 122, 122, 0.18) !important;
 }
 
 .urgentDate {
