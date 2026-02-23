@@ -3,7 +3,7 @@ import CourseInput from './CourseInput'
 import JSONInput from './JSONInput'
 import styles from './AddCoursePanel.module.css'
 
-const CHATGPT_PROMPT = `I will give you a course syllabus. Extract EVERYTHING that needs to be done for the semester—anything a student would put on a calendar. Output a JSON array with objects in this format: [{ "title": "Assignment Name", "due": "YYYY-MM-DD", "content": "Brief description or requirements" }]
+const AI_PROMPT = `I will give you a course syllabus. Extract EVERYTHING that needs to be done for the semester—anything a student would put on a calendar. Output a JSON array with objects in this format: [{ "title": "Assignment Name", "due": "YYYY-MM-DD", "content": "Brief description or requirements" }]
 Requirements:
 1. Create an EXHAUSTIVE list. Include every assignment, quiz, exam, paper, reading due, discussion post, project milestone—anything with a due date or deadline.
 2. List each item separately. Do NOT summarize (e.g., list "Quiz 1", "Quiz 2", "Quiz 3", not "Quizzes").
@@ -23,7 +23,7 @@ export default function AddCoursePanel({ courseName, jsonInput, onCourseChange, 
         </button>
       </div>
       <p className={styles.hint}>
-        Paste syllabus JSON from ChatGPT. Use the prompt below in ChatGPT first.
+        Paste the output from AI here. Use the prompt below in AI first, then copy what it gives you.
       </p>
       <CourseInput value={courseName} onChange={onCourseChange} />
       <div className={styles.jsonWrap}>
@@ -33,8 +33,8 @@ export default function AddCoursePanel({ courseName, jsonInput, onCourseChange, 
         Add to Calendar
       </button>
       <details className={styles.promptDetails}>
-        <summary>ChatGPT prompt</summary>
-        <pre>{CHATGPT_PROMPT}</pre>
+        <summary>Copy this prompt for AI</summary>
+        <pre>{AI_PROMPT}</pre>
       </details>
     </div>
   )

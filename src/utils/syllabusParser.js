@@ -1,5 +1,5 @@
 /**
- * Parse and validate assignment JSON from ChatGPT syllabus output.
+ * Parse and validate assignment JSON from AI syllabus output.
  * Expected format: { title, due, content }
  * @param {string} jsonStr - Raw JSON string
  * @param {string} courseName - Name of the course to tag assignments with

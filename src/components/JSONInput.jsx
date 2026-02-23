@@ -11,7 +11,7 @@ export default function JSONInput({ value, onChange }) {
   return (
     <div className={styles.wrapper}>
       <label htmlFor="json-input" className={styles.label}>
-        Paste JSON from ChatGPT
+        Paste output from AI
       </label>
       <textarea
         id="json-input"

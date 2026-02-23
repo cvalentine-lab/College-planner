@@ -41,11 +41,11 @@ function AppContent() {
   function handleAdd() {
     const parsed = parseAssignments(jsonInput, courseName)
     if (parsed === null) {
-      alert('Invalid JSON. Please paste valid JSON from ChatGPT.')
+      alert("Couldn't read that. Please paste the output from AI again.")
       return
     }
     if (parsed.length === 0) {
-      alert('No valid assignments found. Ensure the JSON has objects with "title" and "due".')
+      alert("No assignments found. Make sure you pasted the full output from AI.")
       return
     }
 
@@ -98,13 +98,6 @@ function AppContent() {
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
         <div className={styles.brand}>COLLEGE PLANNER</div>
-        <button
-          type="button"
-          className={styles.sidebarAddBtn}
-          onClick={() => setShowAddPanel(true)}
-        >
-          + Add Course
-        </button>
       </aside>
 
       <div className={styles.mainScroll}>
@@ -157,15 +150,8 @@ function AppContent() {
               <div className={styles.empty}>
                 <p>Add a course to get started.</p>
                 <p className={styles.emptyHint}>
-                  Use the <strong>+ Add Course</strong> button. Paste your syllabus into ChatGPT with the prompt in that panel, then paste the JSON output here.
+                  Click <strong>+ Add Course</strong> in the nav bar above. Paste your syllabus into AI with the prompt in that panel, then paste the output here.
                 </p>
-                <button
-                  type="button"
-                  className={styles.addBtnLarge}
-                  onClick={() => setShowAddPanel(true)}
-                >
-                  + Add Course
-                </button>
               </div>
             ) : showList ? (
               <section className={styles.section}>

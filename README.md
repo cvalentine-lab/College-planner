@@ -4,8 +4,8 @@ A React web app that helps students plan assignments and calculate the minimum s
 
 ## How to Use
 
-1. **Copy your course syllabus** and paste it into ChatGPT with the prompt shown in the app.
-2. **Copy the JSON output** from ChatGPT and paste it into the app's JSON text area.
+1. **Copy your course syllabus** and paste it into AI with the prompt shown in the app.
+2. **Copy the JSON output** from AI and paste it into the app's JSON text area.
 3. **Enter your target grade** (and optionally your current grade).
 4. **Click "Generate Planner"** to see your personalized plan.
 
