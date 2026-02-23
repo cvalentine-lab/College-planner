@@ -1,0 +1,30 @@
+:root {
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a2332;
+  --bg-tertiary: #243447;
+  --text-primary: #e7e9ea;
+  --text-secondary: #8b98a5;
+  --accent: #1d9bf0;
+  --accent-hover: #1a8cd8;
+  --success: #00ba7c;
+  --danger: #f4212e;
+  --warning: #ffad1f;
+  --border: #38444d;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
