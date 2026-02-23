@@ -1,15 +1,44 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import styles from './LandingPage.module.css'
+
+const SLIDES = [
+  { title: 'Paste Your Syllabus', description: 'Use AI to turn any syllabus into a formatted list. One paste, and your entire semester is imported.', icon: '📋' },
+  { title: 'Calendar & List Views', description: 'Switch between calendar and list views. See assignments by month, week, or day—however you prefer to plan.', icon: '📅' },
+  { title: 'Filter by Class', description: 'Focus on one course or see everything at once. Your assignments stay organized automatically.', icon: '🎯' },
+  { title: 'Your Data, Secured', description: 'Sign in to save your plans. Your courses and assignments sync per account—never lose track.', icon: '🔐' },
+]
 
 export default function LandingPage({ onGetStarted, onSignIn }) {
   const scrollRef = useRef(null)
+  const [slideIndex, setSlideIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setSlideIndex((i) => (i + 1) % SLIDES.length)
+        setIsTransitioning(false)
+      }, 300)
+    }, 4500)
+    return () => clearInterval(t)
+  }, [])
+
+  function goToSlide(i) {
+    if (i === slideIndex) return
+    setIsTransitioning(true)
+    setTimeout(() => {
+      setSlideIndex(i)
+      setIsTransitioning(false)
+    }, 300)
+  }
 
   function scrollToTop() {
     scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  function scrollToAbout() {
-    const el = document.getElementById('about')
+  function scrollToSlideshow() {
+    const el = document.getElementById('slideshow')
     const container = scrollRef.current
     if (!el || !container) return
     const target = el.offsetTop - 20
@@ -43,7 +72,7 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
           <button type="button" className={styles.navLink} onClick={scrollToTop}>
             Home
           </button>
-          <button type="button" className={styles.navLink} onClick={scrollToAbout}>
+          <button type="button" className={styles.navLink} onClick={scrollToSlideshow}>
             About
           </button>
           <button type="button" className={styles.navLink} onClick={onSignIn}>
@@ -99,11 +128,24 @@ export default function LandingPage({ onGetStarted, onSignIn }) {
         </section>
       </div>
 
-      <section id="about" className={styles.about}>
-        <h2 className={styles.aboutTitle}>About College Planner</h2>
-        <p className={styles.aboutText}>
-          College Planner helps you turn messy syllabi into a clear visual calendar. Paste your syllabus into AI, copy the output, and we'll organize your assignments by due date. View everything in a calendar or list, filter by class, and stay on top of deadlines.
-        </p>
+      <section id="slideshow" className={styles.slidesSection}>
+        <div className={`${styles.slideCard} ${isTransitioning ? styles.slideOut : ''}`} key={slideIndex}>
+          <div className={styles.slideIcon}>{SLIDES[slideIndex].icon}</div>
+          <h2 className={styles.slideTitle}>{SLIDES[slideIndex].title}</h2>
+          <p className={styles.slideDesc}>{SLIDES[slideIndex].description}</p>
+        </div>
+        <div className={styles.dots}>
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              className={styles.dot}
+              aria-label={`Go to slide ${i + 1}`}
+              data-active={i === slideIndex}
+              onClick={() => goToSlide(i)}
+            />
+          ))}
+        </div>
       </section>
 
       <footer className={styles.footer}>
